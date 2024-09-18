@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dp83tif3c2ffx"]
+
+[ext_resource type="Script" path="res://scripts/audio_handler.gd" id="1_3wkkn"]
+
+[node name="audioHandler" type="Node"]
+script = ExtResource("1_3wkkn")
+
+[node name="soundEffectQueue" type="Node" parent="."]
+
+[node name="bgMusicPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"bgMusic"
