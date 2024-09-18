@@ -28,6 +28,7 @@ func toggleShadow(button, on: bool):
 	
 func loadMenu():
 	visible = true
+	backButton.get_child(0).visible = false
 	loadImage(image_id)
 	aboutScreenAnim.play_backwards("fade_out")
 	await aboutScreenAnim.animation_finished

@@ -14,6 +14,7 @@ var active := false
 
 signal bird_left
 signal bird_returned
+signal tween_birdhouse
 signal menu_transition
 
 func _ready() -> void:
@@ -35,6 +36,7 @@ func birdLeave(bird) -> void:
 	if not bird_out and not birdhouseAnim.is_playing():
 		current_bird_out = bird
 		birdhouseAnim.play("%s_leave" % bird)
+		emit_signal("tween_birdhouse")
 		if not birdhouseAnim.animation_finished.is_connected(birdLeft):
 			birdhouseAnim.animation_finished.connect(birdLeft, CONNECT_ONE_SHOT)
 	elif bird_out and current_bird_out != null and not birdhouseAnim.is_playing():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://drqhpe66b8tnl"]
+[gd_scene load_steps=66 format=3 uid="uid://drqhpe66b8tnl"]
 
 [ext_resource type="Texture2D" uid="uid://cousv6pm0mdyp" path="res://assets/trunk.png" id="1_6e062"]
 [ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_7ouk4"]
@@ -7,15 +7,19 @@
 [ext_resource type="Theme" uid="uid://cbdk17h8kx6k4" path="res://assets/themes/theme1.tres" id="3_hfdxp"]
 [ext_resource type="Script" path="res://scripts/home_screen.gd" id="3_jates"]
 [ext_resource type="Texture2D" uid="uid://bdronbuhnrbk6" path="res://assets/bluejay.png" id="3_ltxcs"]
+[ext_resource type="Texture2D" uid="uid://6tpv4aobhrmk" path="res://assets/buttons/fullscreen_button.png" id="3_tf3bd"]
+[ext_resource type="Texture2D" uid="uid://cte63t74vdusx" path="res://assets/buttons/fullscreen_button_hovered.png" id="4_7jfnm"]
 [ext_resource type="Texture2D" uid="uid://bvk10xw5dk6q1" path="res://assets/house_front.png" id="5_271k8"]
+[ext_resource type="Texture2D" uid="uid://snpao3y3jbgi" path="res://assets/buttons/fullscreen_button_pressed.png" id="5_c6hq4"]
 [ext_resource type="Texture2D" uid="uid://b50enjjwxtc0e" path="res://assets/cardinal.png" id="6_4r51i"]
+[ext_resource type="Script" path="res://scripts/fullscreen_button.gd" id="6_hyc2v"]
 [ext_resource type="Texture2D" uid="uid://c4hxjpxp2b3xl" path="res://assets/finch.png" id="7_6hm5r"]
 [ext_resource type="Texture2D" uid="uid://cyf0p0u463sdc" path="res://assets/pigeon.png" id="8_kknsk"]
 [ext_resource type="Script" path="res://scripts/bird_handler.gd" id="9_soity"]
 [ext_resource type="Script" path="res://scripts/about_screen.gd" id="13_1u0wb"]
-[ext_resource type="Texture2D" uid="uid://b5eq0gbcwlmnr" path="res://assets/volume_button.png" id="13_t7j6c"]
-[ext_resource type="Texture2D" uid="uid://d26to0igwsgc0" path="res://assets/volume_button_hovered.png" id="14_htt5n"]
-[ext_resource type="Texture2D" uid="uid://bfpfqic5q4sbb" path="res://assets/volume_button_pressed.png" id="14_uh5hj"]
+[ext_resource type="Texture2D" uid="uid://b5eq0gbcwlmnr" path="res://assets/buttons/volume_button.png" id="13_t7j6c"]
+[ext_resource type="Texture2D" uid="uid://d26to0igwsgc0" path="res://assets/buttons/volume_button_hovered.png" id="14_htt5n"]
+[ext_resource type="Texture2D" uid="uid://bfpfqic5q4sbb" path="res://assets/buttons/volume_button_pressed.png" id="14_uh5hj"]
 [ext_resource type="Script" path="res://scripts/resume_screen.gd" id="15_il76g"]
 [ext_resource type="Script" path="res://scripts/volume_button.gd" id="16_wylki"]
 [ext_resource type="Texture2D" uid="uid://cauqbrnvtsvl8" path="res://assets/about_1.jpg" id="18_4mje8"]
@@ -26,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://0ry67tlxjxr3" path="res://assets/about_4.jpg" id="21_q2g02"]
 [ext_resource type="Script" path="res://scripts/projects_screen.gd" id="23_nl176"]
 [ext_resource type="Script" path="res://scripts/contact_screen.gd" id="23_yb05o"]
+[ext_resource type="Texture2D" uid="uid://dixo0jb5l6unv" path="res://assets/birdhouse.png" id="27_ymwoj"]
 
 [sub_resource type="Animation" id="Animation_drwx6"]
 length = 0.001
@@ -470,6 +475,10 @@ _data = {
 "fade_out": SubResource("Animation_d5xut")
 }
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h4mms"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5sfii"]
+
 [sub_resource type="Animation" id="Animation_7ooh1"]
 length = 0.001
 tracks/0/type = "value"
@@ -580,7 +589,24 @@ theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
-[node name="volumeButton" type="TextureButton" parent="mainUI/mainControl/marginCont"]
+[node name="buttonBox" type="HBoxContainer" parent="mainUI/mainControl/marginCont"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/separation = 32
+alignment = 2
+
+[node name="fullscreenButton" type="TextureButton" parent="mainUI/mainControl/marginCont/buttonBox"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+toggle_mode = true
+texture_normal = ExtResource("3_tf3bd")
+texture_pressed = ExtResource("5_c6hq4")
+texture_hover = ExtResource("4_7jfnm")
+script = ExtResource("6_hyc2v")
+
+[node name="volumeButton" type="TextureButton" parent="mainUI/mainControl/marginCont/buttonBox"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
@@ -603,12 +629,17 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0.360784, 0.545098, 0.576471, 1)
 
-[node name="trunk" type="Sprite2D" parent="."]
-texture = ExtResource("1_6e062")
-
 [node name="leaves_far" type="Sprite2D" parent="."]
 position = Vector2(56, -300)
 texture = ExtResource("2_ls1as")
+
+[node name="trunk" type="Sprite2D" parent="."]
+texture = ExtResource("1_6e062")
+
+[node name="birdhouse" type="Sprite2D" parent="."]
+position = Vector2(136.56, 129.53)
+texture = ExtResource("27_ymwoj")
+offset = Vector2(0, -71)
 
 [node name="birdHandler" type="Node2D" parent="."]
 position = Vector2(159, 111)
@@ -638,12 +669,12 @@ libraries = {
 [node name="hoverTimer" type="Timer" parent="birdHandler"]
 one_shot = true
 
+[node name="birdhouse_front" type="Sprite2D" parent="."]
+texture = ExtResource("5_271k8")
+
 [node name="leaves" type="Sprite2D" parent="."]
 position = Vector2(-52, -96)
 texture = ExtResource("2_yol87")
-
-[node name="house_front" type="Sprite2D" parent="."]
-texture = ExtResource("5_271k8")
 
 [node name="homeScreen" type="CanvasLayer" parent="."]
 visible = false
@@ -878,7 +909,7 @@ text = "UNITED STATES * COLORADO"
 
 [node name="HSeparator" type="HSeparator" parent="aboutScreen/aboutControl/marginCont/aboutVbox"]
 layout_mode = 2
-theme_override_constants/separation = 64
+theme_override_constants/separation = 48
 theme_override_styles/separator = SubResource("StyleBoxEmpty_oxhe4")
 
 [node name="titleVbox" type="VBoxContainer" parent="aboutScreen/aboutControl/marginCont"]
@@ -925,15 +956,6 @@ size_flags_vertical = 3
 expand_mode = 1
 stretch_mode = 5
 
-[node name="imageButtons" type="HBoxContainer" parent="aboutScreen/aboutControl/marginCont/titleVbox/imagePanel"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="leftButton" type="Button" parent="aboutScreen/aboutControl/marginCont/titleVbox/imagePanel"]
 custom_minimum_size = Vector2(96, 0)
 layout_mode = 1
@@ -965,7 +987,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_qp5q2")
 
 [node name="HSeparator2" type="HSeparator" parent="aboutScreen/aboutControl/marginCont/titleVbox"]
 layout_mode = 2
-theme_override_constants/separation = 64
+theme_override_constants/separation = 32
 theme_override_styles/separator = SubResource("StyleBoxEmpty_oxhe4")
 
 [node name="backButton" type="Button" parent="aboutScreen/aboutControl/marginCont"]
@@ -1074,7 +1096,7 @@ text = "UNIVERSITY OF COLORADO BOULDER
 
 [node name="HSeparator2" type="HSeparator" parent="resumeScreen/resumeControl/marginCont/resumeVbox"]
 layout_mode = 2
-theme_override_constants/separation = 64
+theme_override_constants/separation = 48
 theme_override_styles/separator = SubResource("StyleBoxEmpty_oxhe4")
 
 [node name="detailsVbox" type="VBoxContainer" parent="resumeScreen/resumeControl/marginCont"]
@@ -1147,7 +1169,7 @@ horizontal_alignment = 1
 
 [node name="HSeparator2" type="HSeparator" parent="resumeScreen/resumeControl/marginCont/detailsVbox"]
 layout_mode = 2
-theme_override_constants/separation = 64
+theme_override_constants/separation = 32
 theme_override_styles/separator = SubResource("StyleBoxEmpty_oxhe4")
 
 [node name="backButton" type="Button" parent="resumeScreen/resumeControl/marginCont"]
@@ -1179,7 +1201,12 @@ libraries = {
 }
 
 [node name="projectsScreen" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("23_nl176")
+projectMedia = {
+"blep": PackedStringArray("res://assets/blep_1.png", "res://assets/blep_2.png", "res://assets/blep_3.png", "res://assets/blep_4.jpg", "res://assets/blep_5.jpg"),
+"sarpedon": PackedStringArray("res://assets/sarpedon_1.png", "res://assets/sarpedon_2.png")
+}
 
 [node name="projectControl" type="Control" parent="projectsScreen"]
 layout_mode = 3
@@ -1241,7 +1268,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 0
+theme_override_constants/separation = 16
 
 [node name="projectVisual" type="MarginContainer" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox"]
 layout_mode = 2
@@ -1254,11 +1281,10 @@ theme_override_constants/margin_bottom = 8
 [node name="projectImage" type="TextureRect" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVisual"]
 layout_mode = 2
 size_flags_horizontal = 3
+expand_mode = 1
+stretch_mode = 5
 
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVisual"]
-layout_mode = 2
-
-[node name="beatboxLabel4" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVisual"]
+[node name="mediaLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVisual"]
 layout_mode = 2
 theme_type_variation = &"heavyLabel"
 text = "CLICK ON A 
@@ -1266,6 +1292,28 @@ PROJECT TO VIEW
 DETAILS/IMAGES"
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[node name="leftButton" type="Button" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVisual"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5innd")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_h4mms")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_h4mms")
+theme_override_styles/hover = SubResource("StyleBoxFlat_343w0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_343w0")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_qp5q2")
+
+[node name="rightButton" type="Button" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVisual"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5innd")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_5sfii")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_5sfii")
+theme_override_styles/hover = SubResource("StyleBoxFlat_arvtq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_arvtq")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_qp5q2")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox"]
 layout_mode = 2
@@ -1275,61 +1323,74 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="beatboxLabel4" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/ScrollContainer/descVbox"]
+[node name="sarpedonLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/ScrollContainer/descVbox"]
 layout_mode = 2
+mouse_filter = 0
 theme_type_variation = &"heavyLabel"
 text = "SARPEDON"
 autowrap_mode = 2
 
-[node name="beatboxSubLabel4" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/ScrollContainer/descVbox"]
+[node name="sarpedonSubLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/ScrollContainer/descVbox"]
 layout_mode = 2
 theme_type_variation = &"heavyLabel"
 theme_override_font_sizes/font_size = 24
-text = "VIDEO GAME * GODOT * 3D * OPEN WORLD NARRATIVE * COMING SOON TO STEAM (OCT)"
+text = "VIDEO GAME * GODOT * 3D * OPEN WORLD NARRATIVE * COMING SOON TO STEAM (OCT) 
+
+"
 autowrap_mode = 2
 
-[node name="beatboxLabel3" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/ScrollContainer/descVbox"]
+[node name="blepLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/ScrollContainer/descVbox"]
 layout_mode = 2
+mouse_filter = 0
 theme_type_variation = &"heavyLabel"
 text = "BLEP"
 autowrap_mode = 2
 
-[node name="beatboxSubLabel3" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/ScrollContainer/descVbox"]
+[node name="blepSubLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/ScrollContainer/descVbox"]
 layout_mode = 2
 theme_type_variation = &"heavyLabel"
 theme_override_font_sizes/font_size = 24
-text = "VIDEO GAME * DUO PROJECT * GODOT * 2D * PUBLISHED ON GOOGLE PLAY"
+text = "VIDEO GAME * DUO PROJECT * GODOT * 2D * PUBLISHED ON GOOGLE PLAY
+
+"
 autowrap_mode = 2
 
-[node name="beatboxLabel5" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/ScrollContainer/descVbox"]
+[node name="jammerLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/ScrollContainer/descVbox"]
 layout_mode = 2
+mouse_filter = 0
 theme_type_variation = &"heavyLabel"
 text = "OTHER GAMES/JAMMERS"
 autowrap_mode = 2
 
-[node name="beatboxSubLabel5" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/ScrollContainer/descVbox"]
+[node name="jammerSubLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/ScrollContainer/descVbox"]
 layout_mode = 2
 theme_type_variation = &"heavyLabel"
 theme_override_font_sizes/font_size = 24
-text = "VIDEO GAMES * SOLO AND GROUP PROJECTS * GODOT & PYGAME * PUBLISHED ON ITCH"
+text = "VIDEO GAMES * SOLO AND GROUP PROJECTS * GODOT & PYGAME * PUBLISHED ON ITCH
+
+"
 autowrap_mode = 2
 
-[node name="beatboxLabel2" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/ScrollContainer/descVbox"]
+[node name="voiceLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/ScrollContainer/descVbox"]
 layout_mode = 2
+mouse_filter = 0
 theme_type_variation = &"heavyLabel"
 text = "VOICE PILOTED GAMES"
 autowrap_mode = 2
 
-[node name="beatboxSubLabel2" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/ScrollContainer/descVbox"]
+[node name="voiceSubLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/ScrollContainer/descVbox"]
 layout_mode = 2
 theme_type_variation = &"heavyLabel"
 theme_override_font_sizes/font_size = 24
 text = "PYTHON * SPEECH RECOGNITION 
-* INPUT CONTROL"
+* INPUT CONTROL
+
+"
 autowrap_mode = 2
 
 [node name="beatboxLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/ScrollContainer/descVbox"]
 layout_mode = 2
+mouse_filter = 0
 theme_type_variation = &"heavyLabel"
 text = "BEATBOX VIDEO ESSAY"
 autowrap_mode = 2
@@ -1338,12 +1399,14 @@ autowrap_mode = 2
 layout_mode = 2
 theme_type_variation = &"heavyLabel"
 theme_override_font_sizes/font_size = 24
-text = "VIDEO EDITING * VIDEO/AUDIO RECORDING"
+text = "VIDEO EDITING * VIDEO/AUDIO RECORDING
+
+"
 autowrap_mode = 2
 
 [node name="HSeparator2" type="HSeparator" parent="projectsScreen/projectControl/marginCont/detailsVbox"]
 layout_mode = 2
-theme_override_constants/separation = 64
+theme_override_constants/separation = 48
 theme_override_styles/separator = SubResource("StyleBoxEmpty_oxhe4")
 
 [node name="backButton" type="Button" parent="projectsScreen/projectControl/marginCont"]
@@ -1375,7 +1438,6 @@ libraries = {
 }
 
 [node name="contactScreen" type="CanvasLayer" parent="."]
-visible = false
 script = ExtResource("23_yb05o")
 
 [node name="contactControl" type="Control" parent="contactScreen"]
@@ -1431,7 +1493,7 @@ horizontal_alignment = 2
 
 [node name="HSeparator2" type="HSeparator" parent="contactScreen/contactControl/marginCont/detailsVbox"]
 layout_mode = 2
-theme_override_constants/separation = 64
+theme_override_constants/separation = 48
 theme_override_styles/separator = SubResource("StyleBoxEmpty_oxhe4")
 
 [node name="contactBox" type="VBoxContainer" parent="contactScreen/contactControl/marginCont"]

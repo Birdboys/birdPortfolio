@@ -7,12 +7,14 @@ extends Node2D
 @onready var contactScreen := $contactScreen
 @onready var projectsScreen := $projectsScreen
 @onready var birdHandler := $birdHandler
+@onready var birdhouse := $birdhouse
 @onready var cam_home_pos := Vector2(-256, -156)
 @onready var cam_about_pos := Vector2(-820, -640)
 @onready var cam_resume_pos := Vector2(1112, -40)
 @onready var cam_contact_pos := Vector2(-301, 944)
 @onready var cam_project_pos := Vector2(-1456, 0)
 
+var birdhouse_tween : Tween
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	homeScreen.button_enter.connect(birdHandler.birdHover)
@@ -20,9 +22,20 @@ func _ready() -> void:
 	homeScreen.menu_transition.connect(birdHandler.birdFlyAway)
 	homeScreen.reset_birds.connect(birdHandler.reset)
 	birdHandler.menu_transition.connect(transitionMenu)
+	birdHandler.tween_birdhouse.connect(tweenBirdhouse)
 	contactScreen.email_birds.connect(birdHandler.emailBirds)
 	
 	mainCam.position = cam_home_pos
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("reload"): get_tree().change_scene_to_file("res://scenes/main_scene.tscn")
+
+func tweenBirdhouse():
+	if birdhouse_tween is Tween: birdhouse_tween.kill()
+	birdhouse_tween = get_tree().create_tween()
+	birdhouse_tween.tween_interval(0.05)
+	birdhouse_tween.tween_property(birdhouse, "scale", Vector2(1.05, 1.05), 0.1)
+	birdhouse_tween.tween_property(birdhouse, "scale", Vector2(1.0, 1.0), 0.1)
 	
 func resetMenus():
 	homeScreen.reset()
