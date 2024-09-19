@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://drqhpe66b8tnl"]
+[gd_scene load_steps=73 format=3 uid="uid://drqhpe66b8tnl"]
 
 [ext_resource type="Texture2D" uid="uid://cousv6pm0mdyp" path="res://assets/trunk.png" id="1_6e062"]
 [ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_7ouk4"]
@@ -35,7 +35,13 @@
 [ext_resource type="Texture2D" uid="uid://cnvdvlsnkhdc1" path="res://assets/buttons/linkedin_button.png" id="31_yukb0"]
 [ext_resource type="Texture2D" uid="uid://ccsd5riquyugh" path="res://assets/loadingBg.png" id="34_8bhrc"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uyfaw"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_huw3s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_acpqt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5c2u6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lry6r"]
 
 [sub_resource type="Animation" id="Animation_drwx6"]
 length = 0.001
@@ -667,23 +673,40 @@ texture = ExtResource("3_ltxcs")
 script = ExtResource("14_1vx3q")
 
 [node name="birdButton" type="Area2D" parent="birdHandler/bluejay"]
-visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="birdHandler/bluejay/birdButton"]
-shape = SubResource("RectangleShape2D_uyfaw")
+[node name="birdCol" type="CollisionShape2D" parent="birdHandler/bluejay/birdButton"]
+shape = SubResource("RectangleShape2D_huw3s")
 
 [node name="cardinal" type="Sprite2D" parent="birdHandler"]
 position = Vector2(-6, -31)
 texture = ExtResource("6_4r51i")
+script = ExtResource("14_1vx3q")
+
+[node name="birdButton" type="Area2D" parent="birdHandler/cardinal"]
+
+[node name="birdCol" type="CollisionShape2D" parent="birdHandler/cardinal/birdButton"]
+shape = SubResource("RectangleShape2D_acpqt")
 
 [node name="finch" type="Sprite2D" parent="birdHandler"]
 position = Vector2(-13, 9)
 texture = ExtResource("7_6hm5r")
+script = ExtResource("14_1vx3q")
+
+[node name="birdButton" type="Area2D" parent="birdHandler/finch"]
+
+[node name="birdCol" type="CollisionShape2D" parent="birdHandler/finch/birdButton"]
+shape = SubResource("RectangleShape2D_5c2u6")
 
 [node name="pidgeon" type="Sprite2D" parent="birdHandler"]
 modulate = Color(0.694118, 0.647059, 0.552941, 1)
 position = Vector2(-4, 0)
 texture = ExtResource("8_kknsk")
+script = ExtResource("14_1vx3q")
+
+[node name="birdButton" type="Area2D" parent="birdHandler/pidgeon"]
+
+[node name="birdCol" type="CollisionShape2D" parent="birdHandler/pidgeon/birdButton"]
+shape = SubResource("RectangleShape2D_lry6r")
 
 [node name="birdhouseAnim" type="AnimationPlayer" parent="birdHandler"]
 libraries = {
@@ -713,6 +736,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 1
 theme = ExtResource("3_hfdxp")
 
 [node name="marginCont" type="MarginContainer" parent="homeScreen/homeControl"]

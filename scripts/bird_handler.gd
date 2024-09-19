@@ -19,6 +19,10 @@ signal menu_transition
 
 func _ready() -> void:
 	hoverTimer.timeout.connect(hoverTimeout)
+	bluejay.button_pressed.connect(birdPressed.bind("bluejay"))
+	cardinal.button_pressed.connect(birdPressed.bind("cardinal"))
+	finch.button_pressed.connect(birdPressed.bind("finch"))
+	pidgeon.button_pressed.connect(birdPressed.bind("pidgeon"))
 	reset()
 
 func birdHover(bird) -> void:
@@ -49,15 +53,17 @@ func birdLeft(_anim) -> void:
 	emit_signal("bird_left")
 	if not active: return
 	if current_bird_hover != null: birdLeave(current_bird_hover)
+	toggleBirdClick(current_bird_out, true)
 	birdCall(current_bird_out)
 	
 func birdReturned(_anim) -> void:
+	toggleBirdClick(current_bird_out, false)
 	current_bird_out = null
 	bird_out = false
 	emit_signal("bird_returned")
 	if not active: return
 	if current_bird_hover != null: birdLeave(current_bird_hover)
-
+	
 func birdFlown(menu: String) -> void:
 	bird_out = false
 	reset()
@@ -128,10 +134,24 @@ func emailBirds(on: bool):
 	else: 
 		if email_birds: birdhouseAnim.play_backwards("email_birds")
 		email_birds = on
-	
+
+func birdPressed(bird: String):
+	AudioHandler.playSound("%s_song" % bird)
+
+func toggleBirdClick(bird: String, on: bool):
+	match bird:
+		"bluejay": bluejay.can_click = on
+		"cardinal": cardinal.can_click = on
+		"finch": finch.can_click = on
+		"pidgeon": pidgeon.can_click = on
+		
 func reset() -> void:
 	current_bird_hover = null
 	current_bird_out = null
+	bluejay.can_click = false
+	cardinal.can_click = false
+	finch.can_click = false
+	pidgeon.can_click = false
 	active = true
 	if birdhouseAnim.animation_finished.is_connected(birdReturned): birdhouseAnim.animation_finished.disconnect(birdReturned)
 	if birdhouseAnim.animation_finished.is_connected(birdLeft): birdhouseAnim.animation_finished.disconnect(birdLeft)
