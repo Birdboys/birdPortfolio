@@ -572,7 +572,7 @@ _data = {
 script = ExtResource("1_7ouk4")
 
 [node name="mainCam" type="Camera2D" parent="."]
-position = Vector2(-1456, 189)
+position = Vector2(-429, 0)
 
 [node name="mainUI" type="CanvasLayer" parent="."]
 layer = 2
@@ -646,6 +646,7 @@ position = Vector2(56, -300)
 texture = ExtResource("2_ls1as")
 
 [node name="trunk" type="Sprite2D" parent="."]
+position = Vector2(0, 534)
 texture = ExtResource("1_6e062")
 
 [node name="birdhouse" type="Sprite2D" parent="."]
@@ -838,7 +839,6 @@ libraries = {
 }
 
 [node name="aboutScreen" type="CanvasLayer" parent="."]
-visible = false
 script = ExtResource("13_1u0wb")
 images = Array[Texture2D]([ExtResource("18_4mje8"), ExtResource("19_nx4oc"), ExtResource("19_gavl5"), ExtResource("21_b4q2u"), ExtResource("21_q2g02"), ExtResource("20_dxypo")])
 
@@ -878,7 +878,8 @@ text = "COLBY BIRD"
 layout_mode = 2
 theme_type_variation = &"heavyLabel"
 theme_override_font_sizes/font_size = 24
-text = "RECENT CS GRAD LOOKING FOR WORK THAT MATTERS"
+text = "RECENT CS GRAD AND GAME DEV LOOKING FOR
+WORK AND UNIQUE EXPERIENCES"
 
 [node name="goalsLabel" type="Label" parent="aboutScreen/aboutControl/marginCont/aboutVbox"]
 layout_mode = 2
@@ -1228,6 +1229,7 @@ libraries = {
 }
 
 [node name="projectsScreen" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("23_nl176")
 projectMedia = {
 "beatbox": PackedStringArray("res://assets/beatbox_1.png", "res://assets/beatbox_2.png", "res://assets/beatbox_3.png"),

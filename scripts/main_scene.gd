@@ -10,7 +10,7 @@ extends Node2D
 @onready var birdhouse := $birdhouse
 @onready var cam_home_pos := Vector2(-256, -156)
 @onready var cam_about_pos := Vector2(-820, -640)
-@onready var cam_resume_pos := Vector2(1112, -40)
+@onready var cam_resume_pos := Vector2(1264, 0)
 @onready var cam_contact_pos := Vector2(-301, 944)
 @onready var cam_project_pos := Vector2(-1456, 0)
 
