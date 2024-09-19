@@ -71,12 +71,7 @@ func _ready() -> void:
 func exitProject():
 	projectBackButton.visible = false
 	projectBackButton.get_child(0).visible = false
-	mainScroll.visible = true
-	sarpedonScroll.visible = false
-	blepScroll.visible = false
-	jammerScroll.visible = false
-	voiceScroll.visible = false
-	beatboxScroll.visible = false
+	
 	
 func labelClicked(input: InputEvent, label):
 	if not (input is InputEventMouseButton and input.button_index == MOUSE_BUTTON_LEFT and input.pressed): return
@@ -141,11 +136,15 @@ func goBack():
 	
 func reset():
 	visible = false
-	projectImage.texture = null
-	mediaLabel.visible = true
 	leftButton.disabled = true
 	rightButton.disabled = true
 	projectBackButton.visible = false
 	mainScroll.visible = true
+	mediaLabel.visible = true
+	projectImage.texture = null
 	sarpedonScroll.visible = false
+	blepScroll.visible = false
+	jammerScroll.visible = false
+	voiceScroll.visible = false
+	beatboxScroll.visible = false
 	projectControl.modulate = Color.TRANSPARENT
