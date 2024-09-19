@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://cbdk17h8kx6k4"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://cbdk17h8kx6k4"]
 
 [ext_resource type="FontFile" uid="uid://dy3scu2uset03" path="res://assets/fonts/FFFFORWA.TTF" id="1_g6rhc"]
 [ext_resource type="FontFile" uid="uid://bwywswrjt5jf8" path="res://assets/fonts/SpaceMono-Bold.ttf" id="2_iesi8"]
@@ -9,6 +9,16 @@ content_margin_top = 16.0
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ptbeu"]
 content_margin_top = 16.0
 draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oytkk"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h7ptr"]
+bg_color = Color(0.141176, 0.239216, 0.360784, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6132u"]
+content_margin_left = 8.0
+content_margin_right = 8.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e70x1"]
 
@@ -30,6 +40,10 @@ Button/styles/pressed = SubResource("StyleBoxEmpty_cyom7")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/font_sizes/font_size = 48
 Label/styles/normal = SubResource("StyleBoxFlat_ptbeu")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_oytkk")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_h7ptr")
+VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_6132u")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_6132u")
 heavyLabel/base_type = &"Label"
 heavyLabel/colors/font_color = Color(1, 1, 1, 1)
 heavyLabel/colors/font_shadow_color = Color(0.141176, 0.239216, 0.360784, 1)

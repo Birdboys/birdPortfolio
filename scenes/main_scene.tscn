@@ -1221,8 +1221,11 @@ libraries = {
 [node name="projectsScreen" type="CanvasLayer" parent="."]
 script = ExtResource("23_nl176")
 projectMedia = {
+"beatbox": PackedStringArray("res://assets/beatbox_1.png", "res://assets/beatbox_2.png", "res://assets/beatbox_3.png"),
 "blep": PackedStringArray("res://assets/blep_1.png", "res://assets/blep_2.png", "res://assets/blep_3.png", "res://assets/blep_4.jpg", "res://assets/blep_5.jpg"),
-"sarpedon": PackedStringArray("res://assets/sarpedon_1.png", "res://assets/sarpedon_2.png")
+"jammer": PackedStringArray("res://assets/quick_1.png", "res://assets/quick_2.png", "res://assets/quick_3.png", "res://assets/fit_1.png", "res://assets/fit_2.png", "res://assets/fit_3.png", "res://assets/leave_1.png", "res://assets/leave_2.png", "res://assets/leave_3.png"),
+"sarpedon": PackedStringArray("res://assets/sarpedon_1.png", "res://assets/sarpedon_2.png"),
+"voice": PackedStringArray("res://assets/voice_1.png")
 }
 
 [node name="projectControl" type="Control" parent="projectsScreen"]
@@ -1388,7 +1391,7 @@ autowrap_mode = 2
 layout_mode = 2
 theme_type_variation = &"heavyLabel"
 theme_override_font_sizes/font_size = 24
-text = "VIDEO GAMES * SOLO AND GROUP PROJECTS * GODOT & PYGAME * PUBLISHED ON ITCH
+text = "VIDEO GAMES * SOLO AND GROUP PROJECTS * VARIOUS GENRES AND STYLES * PUBLISHED ON ITCH.IO
 
 "
 autowrap_mode = 2
@@ -1397,7 +1400,7 @@ autowrap_mode = 2
 layout_mode = 2
 mouse_filter = 0
 theme_type_variation = &"heavyLabel"
-text = "VOICE PILOTED GAMES"
+text = "VOICE CONTROLLED GAMES"
 autowrap_mode = 2
 
 [node name="voiceSubLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/mainScroll/descVbox"]
@@ -1405,7 +1408,7 @@ layout_mode = 2
 theme_type_variation = &"heavyLabel"
 theme_override_font_sizes/font_size = 24
 text = "PYTHON * SPEECH RECOGNITION 
-* INPUT CONTROL
+* INPUT CONTROL * OVERWATCH * LEAGUE OF LEGENDS
 
 "
 autowrap_mode = 2
@@ -1450,6 +1453,20 @@ theme_override_font_sizes/font_size = 24
 text = "Sarpedon is a short, first-person narrative adventure set in an open world that I am creating as the sole developer. The open ended and surreal narrative examines grief, regret, and moving forward, through the lense of the Greek myth of Perseus and Medusa."
 autowrap_mode = 2
 
+[node name="featuresLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/sarpedonScroll/descVbox"]
+layout_mode = 2
+mouse_filter = 0
+theme_type_variation = &"heavyLabel"
+text = "FEATURES"
+autowrap_mode = 2
+
+[node name="featuresSubLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/sarpedonScroll/descVbox"]
+layout_mode = 2
+theme_type_variation = &"heavyLabel"
+theme_override_font_sizes/font_size = 24
+text = "An ambient, eerie, and inhabited island to explore * Unique interactions with Gods and Godesses * Over 450+ lines of handwritten dialogue"
+autowrap_mode = 2
+
 [node name="skillsLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/sarpedonScroll/descVbox"]
 layout_mode = 2
 mouse_filter = 0
@@ -1461,7 +1478,7 @@ autowrap_mode = 2
 layout_mode = 2
 theme_type_variation = &"heavyLabel"
 theme_override_font_sizes/font_size = 24
-text = "Vertex & Fragment Shaders * LOD Optimization"
+text = "Vertex & fragment shaders * LOD optimization * Basic mesh sculpting * More information about Medusa than I know what to do with"
 autowrap_mode = 2
 
 [node name="releaseLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/sarpedonScroll/descVbox"]
@@ -1476,10 +1493,344 @@ layout_mode = 2
 theme_type_variation = &"heavyLabel"
 theme_override_font_sizes/font_size = 24
 text = "Planned release * October 2024
-Platforms * Steam & Itch.io"
+Platforms * PC on Steam & Itch.io"
 autowrap_mode = 2
 
+[node name="blepScroll" type="ScrollContainer" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="descVbox" type="VBoxContainer" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/blepScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="blepLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/blepScroll/descVbox"]
+layout_mode = 2
+mouse_filter = 0
+theme_type_variation = &"heavyLabel"
+text = "BLEP"
+autowrap_mode = 2
+
+[node name="blepSubLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/blepScroll/descVbox"]
+layout_mode = 2
+theme_type_variation = &"heavyLabel"
+theme_override_font_sizes/font_size = 24
+text = "BLEP is my first published mobile game, and also the first brainchild of Birdangutang, a dev team duo consisting of my university friend Kyle and I. Play as a frog hungry for fireflies, jumping from lilipad to lilypad, eating bugs and racking up points. "
+autowrap_mode = 2
+
+[node name="featuresLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/blepScroll/descVbox"]
+layout_mode = 2
+mouse_filter = 0
+theme_type_variation = &"heavyLabel"
+text = "FEATURES"
+autowrap_mode = 2
+
+[node name="featuresSubLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/blepScroll/descVbox"]
+layout_mode = 2
+theme_type_variation = &"heavyLabel"
+theme_override_font_sizes/font_size = 24
+text = "High score system * Account creation, persistent user data, and leaderboards (implemented with Silentwolf API) * Item shop with cool hats"
+autowrap_mode = 2
+
+[node name="birdangutangLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/blepScroll/descVbox"]
+layout_mode = 2
+mouse_filter = 0
+theme_type_variation = &"heavyLabel"
+text = "BIRDANGUTANG"
+autowrap_mode = 2
+
+[node name="birdangutangSubLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/blepScroll/descVbox"]
+layout_mode = 2
+theme_type_variation = &"heavyLabel"
+theme_override_font_sizes/font_size = 24
+text = "Two man dev team * My friend Kyle Roth & I * Making wacky games for wacky people"
+autowrap_mode = 2
+
+[node name="skillsLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/blepScroll/descVbox"]
+layout_mode = 2
+mouse_filter = 0
+theme_type_variation = &"heavyLabel"
+text = "LEARNED SKILLS"
+autowrap_mode = 2
+
+[node name="skillsSubLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/blepScroll/descVbox"]
+layout_mode = 2
+theme_type_variation = &"heavyLabel"
+theme_override_font_sizes/font_size = 24
+text = "User handling and leaderboards implemented with SilentWolf API * Mobile focused development * Particles * Exporting for & publishing to Google Play"
+autowrap_mode = 2
+
+[node name="releaseLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/blepScroll/descVbox"]
+layout_mode = 2
+mouse_filter = 0
+theme_type_variation = &"heavyLabel"
+text = "RELEASE"
+autowrap_mode = 2
+
+[node name="releaseSubLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/blepScroll/descVbox"]
+layout_mode = 2
+theme_type_variation = &"heavyLabel"
+theme_override_font_sizes/font_size = 24
+text = "OUT NOW on Google Play"
+autowrap_mode = 2
+
+[node name="blepPlayButton" type="Button" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/blepScroll/descVbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 24
+text = "PLAY NOW"
+alignment = 0
+
+[node name="blepShadow" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/blepScroll/descVbox/blepPlayButton"]
+visible = false
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"shadowLabel"
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 4
+theme_override_font_sizes/font_size = 24
+text = "PLAY NOW"
+
+[node name="jammerScroll" type="ScrollContainer" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="descVbox" type="VBoxContainer" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/jammerScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="quickLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/jammerScroll/descVbox"]
+layout_mode = 2
+mouse_filter = 0
+theme_type_variation = &"heavyLabel"
+text = "QuickSave"
+autowrap_mode = 2
+
+[node name="quickSubLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/jammerScroll/descVbox"]
+layout_mode = 2
+theme_type_variation = &"heavyLabel"
+theme_override_font_sizes/font_size = 24
+text = "Submission to Brackey's Game Jam 2024.2. Play as QuickSave, a hero who uses their super speed to get people out of oncoming danger. After saving people, watch a replay of your rescue from various angles. Product of a four man team in one week."
+autowrap_mode = 2
+
+[node name="quickPlayButton" type="Button" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/jammerScroll/descVbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 24
+text = "PLAY NOW"
+alignment = 0
+
+[node name="quickShadow" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/jammerScroll/descVbox/quickPlayButton"]
+visible = false
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"shadowLabel"
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 4
+theme_override_font_sizes/font_size = 24
+text = "PLAY NOW"
+
+[node name="fitLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/jammerScroll/descVbox"]
+layout_mode = 2
+mouse_filter = 0
+theme_type_variation = &"heavyLabel"
+text = "Fit to Save"
+autowrap_mode = 2
+
+[node name="fitSubLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/jammerScroll/descVbox"]
+layout_mode = 2
+theme_type_variation = &"heavyLabel"
+theme_override_font_sizes/font_size = 24
+text = "Submission to GMTK Game Jam 2024. Help movitate your climbing partner by pelting him with falling rocks, all the while dangling below on a lively, 2D physics-based rope. Crafted by Birdangutang in 96 hours."
+autowrap_mode = 2
+
+[node name="fitPlayButton" type="Button" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/jammerScroll/descVbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 24
+text = "PLAY NOW"
+alignment = 0
+
+[node name="fitShadow" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/jammerScroll/descVbox/fitPlayButton"]
+visible = false
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"shadowLabel"
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 4
+theme_override_font_sizes/font_size = 24
+text = "PLAY NOW"
+
+[node name="leaveLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/jammerScroll/descVbox"]
+layout_mode = 2
+mouse_filter = 0
+theme_type_variation = &"heavyLabel"
+text = "Let's Leave"
+autowrap_mode = 2
+
+[node name="leaveSubLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/jammerScroll/descVbox"]
+layout_mode = 2
+theme_type_variation = &"heavyLabel"
+theme_override_font_sizes/font_size = 24
+text = "Submission to Secret Santa Jam 2022. A unique take on the city building genre where, instead of building a permanent settlement, you must develop your colony and gather resources in order to evacuate as many citizens as possible under threat of impending meteoric destruction. The origin of the Birdangutang duo and my first Godot game."
+autowrap_mode = 2
+
+[node name="leavePlayButton" type="Button" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/jammerScroll/descVbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 24
+text = "PLAY NOW"
+alignment = 0
+
+[node name="leaveShadow" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/jammerScroll/descVbox/leavePlayButton"]
+visible = false
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"shadowLabel"
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 4
+theme_override_font_sizes/font_size = 24
+text = "PLAY NOW"
+
+[node name="voiceScroll" type="ScrollContainer" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="descVbox" type="VBoxContainer" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/voiceScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="voiceLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/voiceScroll/descVbox"]
+layout_mode = 2
+mouse_filter = 0
+theme_type_variation = &"heavyLabel"
+text = "Voice Controlled Games"
+autowrap_mode = 2
+
+[node name="voiceSubLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/voiceScroll/descVbox"]
+layout_mode = 2
+theme_type_variation = &"heavyLabel"
+theme_override_font_sizes/font_size = 24
+text = "While focusing on games now, I used to create most of my projects with Python. My favorite of these is my voice controller for Overwatch and League of Legends. The program uses a speech recognition library to let you play both games with voice commands for your abilities. For example, you can use Reinhardt's firestrike in Overwatch by saying \"firestrike\", or use Thresh's hook in League by saying \"one\". This came in very handy when, after a longboarding accident, I was unable to use one arm for multiple days."
+autowrap_mode = 2
+
+[node name="voiceCodeButton" type="Button" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/voiceScroll/descVbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 24
+text = "VIEW CODE"
+alignment = 0
+
+[node name="voiceShadow" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/voiceScroll/descVbox/voiceCodeButton"]
+visible = false
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"shadowLabel"
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 4
+theme_override_font_sizes/font_size = 24
+text = "VIEW CODE"
+
+[node name="beatboxScroll" type="ScrollContainer" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="descVbox" type="VBoxContainer" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/beatboxScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="beatboxLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/beatboxScroll/descVbox"]
+layout_mode = 2
+mouse_filter = 0
+theme_type_variation = &"heavyLabel"
+text = "BEATBOX VIDEO ESSAY"
+autowrap_mode = 2
+
+[node name="beatboxSubLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/beatboxScroll/descVbox"]
+layout_mode = 2
+theme_type_variation = &"heavyLabel"
+theme_override_font_sizes/font_size = 24
+text = "A blend of my passions for video essays and beatboxing. This video serves as both an introduction to the art form and the culture for the uninitiated, and an excuse to talk for 25 uninterrupted minutes. My first forray into the content creation, video editing, and Youtube spaces. "
+autowrap_mode = 2
+
+[node name="skillsLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/beatboxScroll/descVbox"]
+layout_mode = 2
+mouse_filter = 0
+theme_type_variation = &"heavyLabel"
+text = "LEARNED SKILLS"
+autowrap_mode = 2
+
+[node name="skillsSubLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/beatboxScroll/descVbox"]
+layout_mode = 2
+theme_type_variation = &"heavyLabel"
+theme_override_font_sizes/font_size = 24
+text = "Video & audio recording\\editing 
+* Script writing"
+autowrap_mode = 2
+
+[node name="boxWatchButton" type="Button" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/beatboxScroll/descVbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 24
+text = "WATCH NOW"
+alignment = 0
+
+[node name="boxShadow" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/beatboxScroll/descVbox/boxWatchButton"]
+visible = false
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"shadowLabel"
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 4
+theme_override_font_sizes/font_size = 24
+text = "WATCH NOW"
+
 [node name="projectBackButton" type="Button" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 24

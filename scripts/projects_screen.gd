@@ -4,6 +4,13 @@ extends CanvasLayer
 @onready var projectBackButton := $projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/projectBackButton
 @onready var leftButton := $projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVisual/leftButton
 @onready var rightButton := $projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVisual/rightButton
+@onready var blepPlayButton := $projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/blepScroll/descVbox/blepPlayButton
+@onready var quickPlayButton := $projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/jammerScroll/descVbox/quickPlayButton
+@onready var fitPlayButton := $projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/jammerScroll/descVbox/fitPlayButton
+@onready var leavePlayButton := $projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/jammerScroll/descVbox/leavePlayButton
+@onready var voiceCodeButton := $projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/voiceScroll/descVbox/voiceCodeButton
+@onready var boxWatchButton := $projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/beatboxScroll/descVbox/boxWatchButton
+
 @onready var projectControl := $projectControl
 @onready var projectScreenAnim := $projectScreenAnim
 @onready var sarpedonLabel := $projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/mainScroll/descVbox/sarpedonLabel
@@ -15,6 +22,10 @@ extends CanvasLayer
 @onready var projectImage := $projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVisual/projectImage
 @onready var mainScroll := $projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/mainScroll
 @onready var sarpedonScroll := $projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/sarpedonScroll
+@onready var blepScroll := $projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/blepScroll
+@onready var jammerScroll := $projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/jammerScroll
+@onready var voiceScroll := $projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/voiceScroll
+@onready var beatboxScroll := $projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/beatboxScroll
 @export var projectMedia := {}
 var active := false
 var media_index := 0
@@ -27,9 +38,28 @@ func _ready() -> void:
 	backButton.mouse_exited.connect(toggleShadow.bind(backButton, false))
 	projectBackButton.mouse_entered.connect(toggleShadow.bind(projectBackButton, true))
 	projectBackButton.mouse_exited.connect(toggleShadow.bind(projectBackButton, false))
+	blepPlayButton.mouse_entered.connect(toggleShadow.bind(blepPlayButton, true))
+	blepPlayButton.mouse_exited.connect(toggleShadow.bind(blepPlayButton, false))
+	quickPlayButton.mouse_entered.connect(toggleShadow.bind(quickPlayButton, true))
+	quickPlayButton.mouse_exited.connect(toggleShadow.bind(quickPlayButton, false))
+	fitPlayButton.mouse_entered.connect(toggleShadow.bind(fitPlayButton, true))
+	fitPlayButton.mouse_exited.connect(toggleShadow.bind(fitPlayButton, false))
+	leavePlayButton.mouse_entered.connect(toggleShadow.bind(leavePlayButton, true))
+	leavePlayButton.mouse_exited.connect(toggleShadow.bind(leavePlayButton, false))
+	voiceCodeButton.mouse_entered.connect(toggleShadow.bind(voiceCodeButton, true))
+	voiceCodeButton.mouse_exited.connect(toggleShadow.bind(voiceCodeButton, false))
+	boxWatchButton.mouse_entered.connect(toggleShadow.bind(boxWatchButton, true))
+	boxWatchButton.mouse_exited.connect(toggleShadow.bind(boxWatchButton, false))
+	
 	leftButton.pressed.connect(moveCarousel.bind(false))
 	rightButton.pressed.connect(moveCarousel.bind(true))
 	projectBackButton.pressed.connect(exitProject)
+	blepPlayButton.pressed.connect(openLink.bind("https://play.google.com/store/apps/details?id=org.godotengine.blep&hl=en_US"))
+	quickPlayButton.pressed.connect(openLink.bind("https://birdboys.itch.io/quicksave"))
+	fitPlayButton.pressed.connect(openLink.bind("https://birdangutang.itch.io/fit-to-scale"))
+	voiceCodeButton.pressed.connect(openLink.bind("https://github.com/Birdboys/Game_Voice_Control/tree/main"))
+	leavePlayButton.pressed.connect(openLink.bind("https://birdboys.itch.io/lets-leave"))
+	boxWatchButton.pressed.connect(openLink.bind("https://www.youtube.com/watch?v=K_C_pixdYO0"))
 	sarpedonLabel.gui_input.connect(labelClicked.bind("sarpedon"))
 	blepLabel.gui_input.connect(labelClicked.bind("blep"))
 	jammerLabel.gui_input.connect(labelClicked.bind("jammer"))
@@ -43,10 +73,13 @@ func exitProject():
 	projectBackButton.get_child(0).visible = false
 	mainScroll.visible = true
 	sarpedonScroll.visible = false
+	blepScroll.visible = false
+	jammerScroll.visible = false
+	voiceScroll.visible = false
+	beatboxScroll.visible = false
 	
 func labelClicked(input: InputEvent, label):
 	if not (input is InputEventMouseButton and input.button_index == MOUSE_BUTTON_LEFT and input.pressed): return
-	if label not in ["sarpedon", "blep"]: return
 	current_media = label
 	media_index = 0
 	loadMedia(projectMedia[current_media][media_index])
@@ -57,6 +90,20 @@ func labelClicked(input: InputEvent, label):
 	projectBackButton.visible = true
 	match label: 
 		"sarpedon": sarpedonScroll.visible = true
+		"blep":
+			blepScroll.visible = true
+			blepPlayButton.get_child(0).visible = false
+		"jammer":
+			jammerScroll.visible = true
+			quickPlayButton.get_child(0).visible = false
+			fitPlayButton.get_child(0).visible = false
+			leavePlayButton.get_child(0).visible = false
+		"voice":
+			voiceScroll.visible = true
+			voiceCodeButton.get_child(0).visible = false
+		"beatbox":
+			beatboxScroll.visible = true
+			boxWatchButton.get_child(0).visible = false
 	AudioHandler.playSound("ui_click")
 	
 func loadMedia(media):
@@ -68,6 +115,9 @@ func moveCarousel(right: bool):
 	else: media_index -= 1
 	media_index = wrapi(media_index, 0, len(projectMedia[current_media]))
 	loadMedia(projectMedia[current_media][media_index])
+
+func openLink(link):
+	OS.shell_open(link)
 	
 func toggleShadow(button, on: bool):
 	if not active: return
