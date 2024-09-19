@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://drqhpe66b8tnl"]
+[gd_scene load_steps=70 format=3 uid="uid://drqhpe66b8tnl"]
 
 [ext_resource type="Texture2D" uid="uid://cousv6pm0mdyp" path="res://assets/trunk.png" id="1_6e062"]
 [ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_7ouk4"]
@@ -33,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://bhsvuxldrwya1" path="res://assets/buttons/itchio_button.png" id="29_b5rdg"]
 [ext_resource type="Texture2D" uid="uid://wc8o0la8ml3c" path="res://assets/buttons/github_button.png" id="30_kq847"]
 [ext_resource type="Texture2D" uid="uid://cnvdvlsnkhdc1" path="res://assets/buttons/linkedin_button.png" id="31_yukb0"]
+[ext_resource type="Texture2D" uid="uid://ccsd5riquyugh" path="res://assets/loadingBg.png" id="34_8bhrc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uyfaw"]
 
@@ -2091,3 +2092,17 @@ text = "FLY BACK"
 libraries = {
 "": SubResource("AnimationLibrary_tlg2f")
 }
+
+[node name="openScreen" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="openTexture" type="TextureRect" parent="openScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+texture = ExtResource("34_8bhrc")
+expand_mode = 1
+stretch_mode = 5

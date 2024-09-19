@@ -6,6 +6,8 @@ extends Node2D
 @onready var resumeScreen := $resumeScreen
 @onready var contactScreen := $contactScreen
 @onready var projectsScreen := $projectsScreen
+@onready var openScreen := $openScreen
+@onready var openTexture := $openScreen/openTexture
 @onready var birdHandler := $birdHandler
 @onready var birdhouse := $birdhouse
 @onready var cam_home_pos := Vector2(-256, -156)
@@ -26,7 +28,11 @@ func _ready() -> void:
 	contactScreen.email_birds.connect(birdHandler.emailBirds)
 	
 	mainCam.position = cam_home_pos
-
+	var open_tween = get_tree().create_tween().set_ease(Tween.EASE_OUT)
+	open_tween.tween_interval(1.0)
+	open_tween.tween_property(openTexture, "modulate", Color.TRANSPARENT, 1.5)
+	open_tween.tween_callback(openScreen.set_visible.bind(false))
+	
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("reload"): get_tree().change_scene_to_file("res://scenes/main_scene.tscn")
 
