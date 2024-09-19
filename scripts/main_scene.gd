@@ -7,7 +7,7 @@ extends Node2D
 @onready var contactScreen := $contactScreen
 @onready var projectsScreen := $projectsScreen
 @onready var openScreen := $openScreen
-@onready var openTexture := $openScreen/openTexture
+@onready var openControl := $openScreen/openControl
 @onready var birdHandler := $birdHandler
 @onready var birdhouse := $birdhouse
 @onready var cam_home_pos := Vector2(-256, -156)
@@ -30,7 +30,7 @@ func _ready() -> void:
 	mainCam.position = cam_home_pos
 	var open_tween = get_tree().create_tween().set_ease(Tween.EASE_OUT)
 	open_tween.tween_interval(1.0)
-	open_tween.tween_property(openTexture, "modulate", Color.TRANSPARENT, 1.5)
+	open_tween.tween_property(openControl, "modulate", Color.TRANSPARENT, 1.5)
 	open_tween.tween_callback(openScreen.set_visible.bind(false))
 	
 func _unhandled_input(event: InputEvent) -> void:
