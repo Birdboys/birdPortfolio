@@ -1,4 +1,6 @@
 extends Sprite2D
 class_name Bird
 
-@export var bird_name : String
+@onready var birdButton := $birdButton
+
+signal button_pressed
