@@ -26,7 +26,7 @@ func emailInput(input: InputEvent):
 func toggleShadow(button, on: bool):
 	if not active: return
 	button.get_child(0).visible = on
-	if on: AudioHandler.playSound("ui_click")
+	if on: AudioHandler.playSound("ui_hover")
 	if button == emailButton and on: emit_signal("email_birds", on)
 	
 func loadMenu():
@@ -41,6 +41,7 @@ func goBack():
 	active = false
 	contactScreenAnim.play("fade_out")
 	emit_signal("email_birds", false)
+	AudioHandler.playSound("ui_click")
 	await contactScreenAnim.animation_finished
 	visible = false
 	emit_signal("back_to_home")

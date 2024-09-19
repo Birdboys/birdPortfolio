@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://drqhpe66b8tnl"]
+[gd_scene load_steps=67 format=3 uid="uid://drqhpe66b8tnl"]
 
 [ext_resource type="Texture2D" uid="uid://cousv6pm0mdyp" path="res://assets/trunk.png" id="1_6e062"]
 [ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_7ouk4"]
@@ -14,12 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://b50enjjwxtc0e" path="res://assets/cardinal.png" id="6_4r51i"]
 [ext_resource type="Script" path="res://scripts/fullscreen_button.gd" id="6_hyc2v"]
 [ext_resource type="Texture2D" uid="uid://c4hxjpxp2b3xl" path="res://assets/finch.png" id="7_6hm5r"]
+[ext_resource type="Texture2D" uid="uid://dglx3fwwmbqid" path="res://assets/buttons/volume_button_4.png" id="7_m6bpy"]
 [ext_resource type="Texture2D" uid="uid://cyf0p0u463sdc" path="res://assets/pigeon.png" id="8_kknsk"]
 [ext_resource type="Script" path="res://scripts/bird_handler.gd" id="9_soity"]
 [ext_resource type="Script" path="res://scripts/about_screen.gd" id="13_1u0wb"]
-[ext_resource type="Texture2D" uid="uid://b5eq0gbcwlmnr" path="res://assets/buttons/volume_button.png" id="13_t7j6c"]
-[ext_resource type="Texture2D" uid="uid://d26to0igwsgc0" path="res://assets/buttons/volume_button_hovered.png" id="14_htt5n"]
-[ext_resource type="Texture2D" uid="uid://bfpfqic5q4sbb" path="res://assets/buttons/volume_button_pressed.png" id="14_uh5hj"]
 [ext_resource type="Script" path="res://scripts/resume_screen.gd" id="15_il76g"]
 [ext_resource type="Script" path="res://scripts/volume_button.gd" id="16_wylki"]
 [ext_resource type="Texture2D" uid="uid://cauqbrnvtsvl8" path="res://assets/about_1.jpg" id="18_4mje8"]
@@ -89,7 +87,7 @@ tracks/3/keys = {
 [sub_resource type="Animation" id="Animation_4nc7g"]
 resource_name = "bluejay_fly"
 length = 1.75
-step = 0.05
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -109,9 +107,12 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1.75),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.1, 1.75),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": ["bluejay"],
+"method": &"birdSong"
+}, {
 "args": ["about"],
 "method": &"birdFlown"
 }]
@@ -157,9 +158,12 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1.65),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.05, 1.65),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": ["cardinal"],
+"method": &"birdSong"
+}, {
 "args": ["projects"],
 "method": &"birdFlown"
 }]
@@ -257,9 +261,12 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1.5),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.05, 1.5),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": ["finch"],
+"method": &"birdSong"
+}, {
 "args": ["resume"],
 "method": &"birdFlown"
 }]
@@ -305,9 +312,12 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1.5),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.05, 1.5),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": ["pidgeon"],
+"method": &"birdSong"
+}, {
 "args": ["contact"],
 "method": &"birdFlown"
 }]
@@ -599,6 +609,15 @@ size_flags_vertical = 8
 theme_override_constants/separation = 32
 alignment = 2
 
+[node name="volumeButton" type="TextureButton" parent="mainUI/mainControl/marginCont/buttonBox"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture_normal = ExtResource("7_m6bpy")
+texture_pressed = ExtResource("7_m6bpy")
+texture_hover = ExtResource("7_m6bpy")
+script = ExtResource("16_wylki")
+
 [node name="fullscreenButton" type="TextureButton" parent="mainUI/mainControl/marginCont/buttonBox"]
 layout_mode = 2
 size_flags_horizontal = 8
@@ -608,16 +627,6 @@ texture_normal = ExtResource("3_tf3bd")
 texture_pressed = ExtResource("5_c6hq4")
 texture_hover = ExtResource("4_7jfnm")
 script = ExtResource("6_hyc2v")
-
-[node name="volumeButton" type="TextureButton" parent="mainUI/mainControl/marginCont/buttonBox"]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 8
-toggle_mode = true
-texture_normal = ExtResource("13_t7j6c")
-texture_pressed = ExtResource("14_uh5hj")
-texture_hover = ExtResource("14_htt5n")
-script = ExtResource("16_wylki")
 
 [node name="skyBG" type="CanvasLayer" parent="."]
 layer = -1

@@ -32,7 +32,7 @@ func _ready() -> void:
 	
 func handleButtonMouseEntered(button):
 	if not active: return
-	AudioHandler.playSound("ui_click")
+	AudioHandler.playSound("ui_hover")
 	button.get_child(0).visible = true
 	birdLeaveHome(button)
 	

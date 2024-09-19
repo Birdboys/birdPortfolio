@@ -69,7 +69,17 @@ func _ready() -> void:
 	reset()
 
 func exitProject():
+	leftButton.disabled = true
+	rightButton.disabled = true
 	projectBackButton.visible = false
+	mainScroll.visible = true
+	mediaLabel.visible = true
+	projectImage.texture = null
+	sarpedonScroll.visible = false
+	blepScroll.visible = false
+	jammerScroll.visible = false
+	voiceScroll.visible = false
+	beatboxScroll.visible = false
 	projectBackButton.get_child(0).visible = false
 	
 	
@@ -110,14 +120,16 @@ func moveCarousel(right: bool):
 	else: media_index -= 1
 	media_index = wrapi(media_index, 0, len(projectMedia[current_media]))
 	loadMedia(projectMedia[current_media][media_index])
-
+	AudioHandler.playSound("ui_click")
+	
 func openLink(link):
+	AudioHandler.playSound("ui_click")
 	OS.shell_open(link)
 	
 func toggleShadow(button, on: bool):
 	if not active: return
 	button.get_child(0).visible = on
-	if on: AudioHandler.playSound("ui_click")
+	if on: AudioHandler.playSound("ui_hover")
 		
 func loadMenu():
 	visible = true
@@ -130,6 +142,7 @@ func goBack():
 	if not active: return
 	active = false
 	projectScreenAnim.play("fade_out")
+	AudioHandler.playSound("ui_click")
 	await projectScreenAnim.animation_finished
 	reset()
 	emit_signal("back_to_home")

@@ -5,7 +5,7 @@ extends Node
 @onready var players := []
 @onready var queue_length := 10
 @onready var queue_index := 0
-@onready var audio_num_vars = {"ui_click":3
+@onready var audio_num_vars = {"ui_click":3, "ui_hover":4, "birdhouse_bop":4
 }
 
 var music_tween

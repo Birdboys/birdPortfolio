@@ -35,6 +35,7 @@ func tweenBirdhouse():
 	birdhouse_tween = get_tree().create_tween()
 	birdhouse_tween.tween_interval(0.05)
 	birdhouse_tween.tween_property(birdhouse, "scale", Vector2(1.05, 1.05), 0.1)
+	birdhouse_tween.tween_callback(AudioHandler.playSound.bind("birdhouse_bop"))
 	birdhouse_tween.tween_property(birdhouse, "scale", Vector2(1.0, 1.0), 0.1)
 	
 func resetMenus():

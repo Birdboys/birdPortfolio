@@ -34,7 +34,7 @@ func openLink(link):
 func toggleShadow(button, on: bool):
 	if not active: return
 	button.get_child(0).visible = on
-	if on: AudioHandler.playSound("ui_click")
+	if on: AudioHandler.playSound("ui_hover")
 	
 func loadMenu():
 	visible = true
@@ -52,11 +52,13 @@ func moveCarousel(right: bool):
 	else: image_id -= 1
 	image_id = wrapi(image_id, 0, len(images))
 	loadImage(image_id)
+	AudioHandler.playSound("ui_click")
 	
 func goBack():
 	if not active: return
 	active = false
 	aboutScreenAnim.play("fade_out")
+	AudioHandler.playSound("ui_click")
 	await aboutScreenAnim.animation_finished
 	visible = false
 	emit_signal("back_to_home")

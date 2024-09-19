@@ -33,7 +33,7 @@ func downloadResume():
 func toggleShadow(button, on: bool):
 	if not active: return
 	button.get_child(0).visible = on
-	if on: AudioHandler.playSound("ui_click")
+	if on: AudioHandler.playSound("ui_hover")
 	
 func loadMenu():
 	visible = true
@@ -46,6 +46,7 @@ func goBack():
 	if not active: return
 	active = false
 	resumeScreenAnim.play("fade_out")
+	AudioHandler.playSound("ui_click")
 	await resumeScreenAnim.animation_finished
 	visible = false
 	emit_signal("back_to_home")

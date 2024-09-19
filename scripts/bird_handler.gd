@@ -49,7 +49,8 @@ func birdLeft(_anim) -> void:
 	emit_signal("bird_left")
 	if not active: return
 	if current_bird_hover != null: birdLeave(current_bird_hover)
-
+	birdCall(current_bird_out)
+	
 func birdReturned(_anim) -> void:
 	current_bird_out = null
 	bird_out = false
@@ -64,7 +65,17 @@ func birdFlown(menu: String) -> void:
 	
 func birdCall(bird: String) -> void:
 	AudioHandler.playSound("%s_call" % bird)
-	
+
+func birdSong(bird: String) -> void:
+	AudioHandler.playSound("%s_song" % bird)
+
+func wingFlap(bird: String) -> void:
+	match bird:
+		"bluejay": AudioHandler.playSound("wing_flap_1")
+		"cardinal": AudioHandler.playSound("wing_flap_2")
+		"finch": AudioHandler.playSound("wing_flap_3")
+		"pidgeon": AudioHandler.playSound("wing_flap_4")
+		
 func birdFlyAway(menu_bird: String) -> void:
 	active = false
 	hoverTimer.stop()
@@ -73,6 +84,7 @@ func birdFlyAway(menu_bird: String) -> void:
 			birdLeave(menu_bird)
 			await bird_left
 			bird_out = false
+			wingFlap(menu_bird)
 			birdhouseAnim.play("%s_fly" % menu_bird)
 		else:
 			if birdhouseAnim.animation_finished.is_connected(birdReturned): birdhouseAnim.animation_finished.disconnect(birdReturned)
@@ -89,6 +101,7 @@ func birdFlyAway(menu_bird: String) -> void:
 	else:
 		if current_bird_out == menu_bird: 
 			bird_out = false
+			wingFlap(menu_bird)
 			birdhouseAnim.play("%s_fly" % menu_bird)
 		else:
 			if not birdhouseAnim.is_playing():

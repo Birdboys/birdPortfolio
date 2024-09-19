@@ -41,6 +41,7 @@ Label/colors/font_color = Color(1, 1, 1, 1)
 Label/font_sizes/font_size = 48
 Label/styles/normal = SubResource("StyleBoxFlat_ptbeu")
 VScrollBar/styles/grabber = SubResource("StyleBoxFlat_oytkk")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_h7ptr")
 VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_h7ptr")
 VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_6132u")
 VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_6132u")
