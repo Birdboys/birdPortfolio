@@ -7,6 +7,10 @@ extends CanvasLayer
 @onready var aboutScreenAnim := $aboutScreenAnim
 @onready var leftButton := $aboutControl/marginCont/titleVbox/imagePanel/leftButton
 @onready var rightButton := $aboutControl/marginCont/titleVbox/imagePanel/rightButton
+@onready var itchButton := $aboutControl/marginCont/titleVbox/linksBox/itchButton
+@onready var githubButton := $aboutControl/marginCont/titleVbox/linksBox/githubButton
+@onready var linkedButton := $aboutControl/marginCont/titleVbox/linksBox/linkedButton
+
 @onready var image_id := 0
 @export var images : Array[Texture2D]
 var active := false
@@ -19,8 +23,14 @@ func _ready() -> void:
 	backButton.mouse_exited.connect(toggleShadow.bind(backButton, false))
 	leftButton.pressed.connect(moveCarousel.bind(false))
 	rightButton.pressed.connect(moveCarousel.bind(true))
+	itchButton.pressed.connect(openLink.bind("https://birdboys.itch.io/"))
+	githubButton.pressed.connect(openLink.bind("https://github.com/Birdboys"))
+	linkedButton.pressed.connect(openLink.bind("https://linkedin.com/in/colby-bird-9aba212a4/"))
 	reset()
 
+func openLink(link):
+	OS.shell_open(link)
+	
 func toggleShadow(button, on: bool):
 	if not active: return
 	button.get_child(0).visible = on

@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://drqhpe66b8tnl"]
+[gd_scene load_steps=69 format=3 uid="uid://drqhpe66b8tnl"]
 
 [ext_resource type="Texture2D" uid="uid://cousv6pm0mdyp" path="res://assets/trunk.png" id="1_6e062"]
 [ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_7ouk4"]
@@ -31,6 +31,9 @@
 [ext_resource type="Script" path="res://scripts/projects_screen.gd" id="23_nl176"]
 [ext_resource type="Script" path="res://scripts/contact_screen.gd" id="23_yb05o"]
 [ext_resource type="Texture2D" uid="uid://dixo0jb5l6unv" path="res://assets/birdhouse.png" id="27_ymwoj"]
+[ext_resource type="Texture2D" uid="uid://bhsvuxldrwya1" path="res://assets/buttons/itchio_button.png" id="29_b5rdg"]
+[ext_resource type="Texture2D" uid="uid://wc8o0la8ml3c" path="res://assets/buttons/github_button.png" id="30_kq847"]
+[ext_resource type="Texture2D" uid="uid://cnvdvlsnkhdc1" path="res://assets/buttons/linkedin_button.png" id="31_yukb0"]
 
 [sub_resource type="Animation" id="Animation_drwx6"]
 length = 0.001
@@ -877,13 +880,8 @@ text = "GOALS"
 layout_mode = 2
 theme_type_variation = &"heavyLabel"
 theme_override_font_sizes/font_size = 24
-text = "WORK IN GAMES INDUSTRY *"
-
-[node name="goalsSubLabel2" type="Label" parent="aboutScreen/aboutControl/marginCont/aboutVbox"]
-layout_mode = 2
-theme_type_variation = &"heavyLabel"
-theme_override_font_sizes/font_size = 24
-text = "CREATE THINGS THAT MOVE PEOPLE"
+text = "WORK IN THE GAMES INDUSTRY 
+* CREATE EXPERIENCES THAT MOVE PEOPLE"
 
 [node name="hobbyLabel" type="Label" parent="aboutScreen/aboutControl/marginCont/aboutVbox"]
 layout_mode = 2
@@ -894,7 +892,8 @@ text = "HOBBIES"
 layout_mode = 2
 theme_type_variation = &"heavyLabel"
 theme_override_font_sizes/font_size = 24
-text = "VIDEO GAMES * LONGBOARDING * PAINTING"
+text = "VIDEO GAMES * LONGBOARDING * BEATBOXING 
+* PAINTING"
 
 [node name="locationLabel" type="Label" parent="aboutScreen/aboutControl/marginCont/aboutVbox"]
 layout_mode = 2
@@ -915,6 +914,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_oxhe4")
 [node name="titleVbox" type="VBoxContainer" parent="aboutScreen/aboutControl/marginCont"]
 layout_mode = 2
 size_flags_horizontal = 8
+theme_override_constants/separation = 16
 
 [node name="HSeparator" type="HSeparator" parent="aboutScreen/aboutControl/marginCont/titleVbox"]
 layout_mode = 2
@@ -984,6 +984,23 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_5innd")
 theme_override_styles/hover = SubResource("StyleBoxFlat_arvtq")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_arvtq")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_qp5q2")
+
+[node name="linksBox" type="HBoxContainer" parent="aboutScreen/aboutControl/marginCont/titleVbox"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="itchButton" type="Button" parent="aboutScreen/aboutControl/marginCont/titleVbox/linksBox"]
+layout_mode = 2
+icon = ExtResource("29_b5rdg")
+
+[node name="githubButton" type="Button" parent="aboutScreen/aboutControl/marginCont/titleVbox/linksBox"]
+layout_mode = 2
+icon = ExtResource("30_kq847")
+
+[node name="linkedButton" type="Button" parent="aboutScreen/aboutControl/marginCont/titleVbox/linksBox"]
+layout_mode = 2
+icon = ExtResource("31_yukb0")
 
 [node name="HSeparator2" type="HSeparator" parent="aboutScreen/aboutControl/marginCont/titleVbox"]
 layout_mode = 2
@@ -1102,6 +1119,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_oxhe4")
 [node name="detailsVbox" type="VBoxContainer" parent="resumeScreen/resumeControl/marginCont"]
 layout_mode = 2
 size_flags_horizontal = 8
+theme_override_constants/separation = 16
 
 [node name="HSeparator" type="HSeparator" parent="resumeScreen/resumeControl/marginCont/detailsVbox"]
 layout_mode = 2
@@ -1201,7 +1219,6 @@ libraries = {
 }
 
 [node name="projectsScreen" type="CanvasLayer" parent="."]
-visible = false
 script = ExtResource("23_nl176")
 projectMedia = {
 "blep": PackedStringArray("res://assets/blep_1.png", "res://assets/blep_2.png", "res://assets/blep_3.png", "res://assets/blep_4.jpg", "res://assets/blep_5.jpg"),
@@ -1315,22 +1332,27 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_arvtq")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_arvtq")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_qp5q2")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox"]
+[node name="projectVbox" type="VBoxContainer" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="descVbox" type="VBoxContainer" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/ScrollContainer"]
+[node name="mainScroll" type="ScrollContainer" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="descVbox" type="VBoxContainer" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/mainScroll"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="sarpedonLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/ScrollContainer/descVbox"]
+[node name="sarpedonLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/mainScroll/descVbox"]
 layout_mode = 2
 mouse_filter = 0
 theme_type_variation = &"heavyLabel"
 text = "SARPEDON"
 autowrap_mode = 2
 
-[node name="sarpedonSubLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/ScrollContainer/descVbox"]
+[node name="sarpedonSubLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/mainScroll/descVbox"]
 layout_mode = 2
 theme_type_variation = &"heavyLabel"
 theme_override_font_sizes/font_size = 24
@@ -1339,14 +1361,14 @@ text = "VIDEO GAME * GODOT * 3D * OPEN WORLD NARRATIVE * COMING SOON TO STEAM (O
 "
 autowrap_mode = 2
 
-[node name="blepLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/ScrollContainer/descVbox"]
+[node name="blepLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/mainScroll/descVbox"]
 layout_mode = 2
 mouse_filter = 0
 theme_type_variation = &"heavyLabel"
 text = "BLEP"
 autowrap_mode = 2
 
-[node name="blepSubLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/ScrollContainer/descVbox"]
+[node name="blepSubLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/mainScroll/descVbox"]
 layout_mode = 2
 theme_type_variation = &"heavyLabel"
 theme_override_font_sizes/font_size = 24
@@ -1355,14 +1377,14 @@ text = "VIDEO GAME * DUO PROJECT * GODOT * 2D * PUBLISHED ON GOOGLE PLAY
 "
 autowrap_mode = 2
 
-[node name="jammerLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/ScrollContainer/descVbox"]
+[node name="jammerLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/mainScroll/descVbox"]
 layout_mode = 2
 mouse_filter = 0
 theme_type_variation = &"heavyLabel"
 text = "OTHER GAMES/JAMMERS"
 autowrap_mode = 2
 
-[node name="jammerSubLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/ScrollContainer/descVbox"]
+[node name="jammerSubLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/mainScroll/descVbox"]
 layout_mode = 2
 theme_type_variation = &"heavyLabel"
 theme_override_font_sizes/font_size = 24
@@ -1371,14 +1393,14 @@ text = "VIDEO GAMES * SOLO AND GROUP PROJECTS * GODOT & PYGAME * PUBLISHED ON IT
 "
 autowrap_mode = 2
 
-[node name="voiceLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/ScrollContainer/descVbox"]
+[node name="voiceLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/mainScroll/descVbox"]
 layout_mode = 2
 mouse_filter = 0
 theme_type_variation = &"heavyLabel"
 text = "VOICE PILOTED GAMES"
 autowrap_mode = 2
 
-[node name="voiceSubLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/ScrollContainer/descVbox"]
+[node name="voiceSubLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/mainScroll/descVbox"]
 layout_mode = 2
 theme_type_variation = &"heavyLabel"
 theme_override_font_sizes/font_size = 24
@@ -1388,14 +1410,14 @@ text = "PYTHON * SPEECH RECOGNITION
 "
 autowrap_mode = 2
 
-[node name="beatboxLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/ScrollContainer/descVbox"]
+[node name="beatboxLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/mainScroll/descVbox"]
 layout_mode = 2
 mouse_filter = 0
 theme_type_variation = &"heavyLabel"
 text = "BEATBOX VIDEO ESSAY"
 autowrap_mode = 2
 
-[node name="beatboxSubLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/ScrollContainer/descVbox"]
+[node name="beatboxSubLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/mainScroll/descVbox"]
 layout_mode = 2
 theme_type_variation = &"heavyLabel"
 theme_override_font_sizes/font_size = 24
@@ -1403,6 +1425,81 @@ text = "VIDEO EDITING * VIDEO/AUDIO RECORDING
 
 "
 autowrap_mode = 2
+
+[node name="sarpedonScroll" type="ScrollContainer" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="descVbox" type="VBoxContainer" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/sarpedonScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="sarpedonLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/sarpedonScroll/descVbox"]
+layout_mode = 2
+mouse_filter = 0
+theme_type_variation = &"heavyLabel"
+text = "SARPEDON"
+autowrap_mode = 2
+
+[node name="sarpedonSubLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/sarpedonScroll/descVbox"]
+layout_mode = 2
+theme_type_variation = &"heavyLabel"
+theme_override_font_sizes/font_size = 24
+text = "Sarpedon is a short, first-person narrative adventure set in an open world that I am creating as the sole developer. The open ended and surreal narrative examines grief, regret, and moving forward, through the lense of the Greek myth of Perseus and Medusa."
+autowrap_mode = 2
+
+[node name="skillsLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/sarpedonScroll/descVbox"]
+layout_mode = 2
+mouse_filter = 0
+theme_type_variation = &"heavyLabel"
+text = "LEARNED SKILLS"
+autowrap_mode = 2
+
+[node name="skillsSubLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/sarpedonScroll/descVbox"]
+layout_mode = 2
+theme_type_variation = &"heavyLabel"
+theme_override_font_sizes/font_size = 24
+text = "Vertex & Fragment Shaders * LOD Optimization"
+autowrap_mode = 2
+
+[node name="releaseLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/sarpedonScroll/descVbox"]
+layout_mode = 2
+mouse_filter = 0
+theme_type_variation = &"heavyLabel"
+text = "RELEASE"
+autowrap_mode = 2
+
+[node name="releaseSubLabel" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/sarpedonScroll/descVbox"]
+layout_mode = 2
+theme_type_variation = &"heavyLabel"
+theme_override_font_sizes/font_size = 24
+text = "Planned release * October 2024
+Platforms * Steam & Itch.io"
+autowrap_mode = 2
+
+[node name="projectBackButton" type="Button" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "BACK TO PROJECTS"
+alignment = 0
+
+[node name="backShadow" type="Label" parent="projectsScreen/projectControl/marginCont/detailsVbox/projectArea/projectHbox/projectVbox/projectBackButton"]
+visible = false
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"shadowLabel"
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 4
+theme_override_font_sizes/font_size = 24
+text = "BACK TO PROJECTS"
 
 [node name="HSeparator2" type="HSeparator" parent="projectsScreen/projectControl/marginCont/detailsVbox"]
 layout_mode = 2
@@ -1438,6 +1535,7 @@ libraries = {
 }
 
 [node name="contactScreen" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("23_yb05o")
 
 [node name="contactControl" type="Control" parent="contactScreen"]
@@ -1466,6 +1564,7 @@ theme_override_constants/margin_bottom = 32
 [node name="detailsVbox" type="VBoxContainer" parent="contactScreen/contactControl/marginCont"]
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_constants/separation = 16
 
 [node name="HSeparator" type="HSeparator" parent="contactScreen/contactControl/marginCont/detailsVbox"]
 layout_mode = 2
