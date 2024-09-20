@@ -28,6 +28,8 @@ func _ready() -> void:
 	contactScreen.email_birds.connect(birdHandler.emailBirds)
 	
 	mainCam.position = cam_home_pos
+	openScreen.visible = true
+	
 	var open_tween = get_tree().create_tween().set_ease(Tween.EASE_OUT)
 	open_tween.tween_interval(1.0)
 	open_tween.tween_property(openControl, "modulate", Color.TRANSPARENT, 1.5)

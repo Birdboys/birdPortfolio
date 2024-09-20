@@ -2119,6 +2119,7 @@ libraries = {
 
 [node name="openScreen" type="CanvasLayer" parent="."]
 layer = 5
+visible = false
 
 [node name="openControl" type="Control" parent="openScreen"]
 layout_mode = 3

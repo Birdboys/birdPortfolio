@@ -29,6 +29,7 @@ func _ready() -> void:
 	reset()
 
 func openLink(link):
+	AudioHandler.playSound("ui_click")
 	OS.shell_open(link)
 	
 func toggleShadow(button, on: bool):
