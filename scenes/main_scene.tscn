@@ -2131,6 +2131,15 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="openBG" type="ColorRect" parent="openScreen/openControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.360784, 0.545098, 0.576471, 1)
+
 [node name="openTexture" type="TextureRect" parent="openScreen/openControl"]
 layout_mode = 1
 anchors_preset = 15
@@ -2140,5 +2149,5 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 0
 texture = ExtResource("34_8bhrc")
-expand_mode = 3
+expand_mode = 1
 stretch_mode = 5
