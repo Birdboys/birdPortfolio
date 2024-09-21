@@ -1084,7 +1084,6 @@ libraries = {
 [node name="imageTimer" type="Timer" parent="aboutScreen"]
 
 [node name="resumeScreen" type="CanvasLayer" parent="."]
-visible = false
 script = ExtResource("15_il76g")
 
 [node name="resumeControl" type="Control" parent="resumeScreen"]
@@ -1933,6 +1932,7 @@ libraries = {
 }
 
 [node name="contactScreen" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("23_yb05o")
 
 [node name="contactControl" type="Control" parent="contactScreen"]
@@ -2017,6 +2017,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"shadowLabel"
 theme_override_constants/line_spacing = 32
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 3
 text = "SEND ME AN EMAIL
 COLBYBBUSINESS@GMAIL.COM"
 horizontal_alignment = 1
@@ -2032,8 +2034,8 @@ grow_vertical = 2
 theme_type_variation = &"shadowLabel"
 theme_override_colors/font_shadow_color = Color(0.243137, 0.411765, 0.345098, 1)
 theme_override_constants/line_spacing = 32
-theme_override_constants/shadow_offset_x = 16
-theme_override_constants/shadow_offset_y = 12
+theme_override_constants/shadow_offset_x = 8
+theme_override_constants/shadow_offset_y = 6
 text = "SEND ME AN EMAIL
 COLBYBBUSINESS@GMAIL.COM"
 horizontal_alignment = 1
@@ -2049,8 +2051,8 @@ grow_vertical = 2
 theme_type_variation = &"shadowLabel"
 theme_override_colors/font_shadow_color = Color(0.878431, 0.784314, 0.447059, 1)
 theme_override_constants/line_spacing = 32
-theme_override_constants/shadow_offset_x = 24
-theme_override_constants/shadow_offset_y = 18
+theme_override_constants/shadow_offset_x = 12
+theme_override_constants/shadow_offset_y = 9
 text = "SEND ME AN EMAIL
 COLBYBBUSINESS@GMAIL.COM"
 horizontal_alignment = 1
@@ -2066,8 +2068,8 @@ grow_vertical = 2
 theme_type_variation = &"shadowLabel"
 theme_override_colors/font_shadow_color = Color(0.831373, 0.501961, 0.301961, 1)
 theme_override_constants/line_spacing = 32
-theme_override_constants/shadow_offset_x = 32
-theme_override_constants/shadow_offset_y = 24
+theme_override_constants/shadow_offset_x = 16
+theme_override_constants/shadow_offset_y = 12
 text = "SEND ME AN EMAIL
 COLBYBBUSINESS@GMAIL.COM"
 horizontal_alignment = 1
@@ -2083,8 +2085,8 @@ grow_vertical = 2
 theme_type_variation = &"shadowLabel"
 theme_override_colors/font_shadow_color = Color(0.690196, 0.227451, 0.282353, 1)
 theme_override_constants/line_spacing = 32
-theme_override_constants/shadow_offset_x = 40
-theme_override_constants/shadow_offset_y = 30
+theme_override_constants/shadow_offset_x = 20
+theme_override_constants/shadow_offset_y = 15
 text = "SEND ME AN EMAIL
 COLBYBBUSINESS@GMAIL.COM"
 horizontal_alignment = 1
