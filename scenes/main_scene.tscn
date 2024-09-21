@@ -1271,7 +1271,7 @@ projectMedia = {
 "beatbox": PackedStringArray("res://assets/beatbox_1.png", "res://assets/beatbox_2.png", "res://assets/beatbox_3.png"),
 "blep": PackedStringArray("res://assets/blep_1.png", "res://assets/blep_2.png", "res://assets/blep_3.png", "res://assets/blep_4.jpg", "res://assets/blep_5.jpg"),
 "jammer": PackedStringArray("res://assets/quick_1.png", "res://assets/quick_2.png", "res://assets/quick_3.png", "res://assets/fit_1.png", "res://assets/fit_2.png", "res://assets/fit_3.png", "res://assets/leave_1.png", "res://assets/leave_2.png", "res://assets/leave_3.png"),
-"sarpedon": PackedStringArray("res://assets/sarpedon_1.png", "res://assets/sarpedon_2.png"),
+"sarpedon": PackedStringArray("res://assets/sarpedon_1.png", "res://assets/sarpedon_2.png", "res://assets/sarpedon_3.png", "res://assets/sarpedon_4.png"),
 "voice": PackedStringArray("res://assets/voice_1.png")
 }
 

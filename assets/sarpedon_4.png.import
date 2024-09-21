@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cn51p2m246tyt"
-path="res://.godot/imported/sarpedon_2.png-a11584d4dff97f0dc9f70d72edf4ab7f.ctex"
+uid="uid://bba35fjb3uhyg"
+path="res://.godot/imported/sarpedon_4.png-976532a8900dc202cb7dd774e9b0a921.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sarpedon_2.png"
-dest_files=["res://.godot/imported/sarpedon_2.png-a11584d4dff97f0dc9f70d72edf4ab7f.ctex"]
+source_file="res://assets/sarpedon_4.png"
+dest_files=["res://.godot/imported/sarpedon_4.png-976532a8900dc202cb7dd774e9b0a921.ctex"]
 
 [params]
 
