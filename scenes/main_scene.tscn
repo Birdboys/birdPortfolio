@@ -2,8 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://cousv6pm0mdyp" path="res://assets/trunk.png" id="1_6e062"]
 [ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_7ouk4"]
-[ext_resource type="Texture2D" uid="uid://t0ix1oo4q6m0" path="res://assets/leave_far.png" id="2_ls1as"]
-[ext_resource type="Texture2D" uid="uid://b1ednuakeg3ur" path="res://assets/leaves_green.png" id="2_yol87"]
 [ext_resource type="Theme" uid="uid://cbdk17h8kx6k4" path="res://assets/themes/theme1.tres" id="3_hfdxp"]
 [ext_resource type="Script" path="res://scripts/home_screen.gd" id="3_jates"]
 [ext_resource type="Texture2D" uid="uid://bdronbuhnrbk6" path="res://assets/bluejay.png" id="3_ltxcs"]
@@ -16,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://c4hxjpxp2b3xl" path="res://assets/finch.png" id="7_6hm5r"]
 [ext_resource type="Texture2D" uid="uid://dglx3fwwmbqid" path="res://assets/buttons/volume_button_4.png" id="7_m6bpy"]
 [ext_resource type="Texture2D" uid="uid://cyf0p0u463sdc" path="res://assets/pigeon.png" id="8_kknsk"]
+[ext_resource type="Texture2D" uid="uid://d26bs45r4x1sr" path="res://assets/leaves_far.png" id="9_biroe"]
 [ext_resource type="Script" path="res://scripts/bird_handler.gd" id="9_soity"]
 [ext_resource type="Script" path="res://scripts/about_screen.gd" id="13_1u0wb"]
 [ext_resource type="Script" path="res://scripts/home_bird.gd" id="14_1vx3q"]
@@ -24,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://cauqbrnvtsvl8" path="res://assets/about_1.jpg" id="18_4mje8"]
 [ext_resource type="Texture2D" uid="uid://nlrueqyh8kpc" path="res://assets/about_2.jpg" id="19_gavl5"]
 [ext_resource type="Texture2D" uid="uid://bedrkp4tidany" path="res://assets/about_5.jpg" id="19_nx4oc"]
+[ext_resource type="Texture2D" uid="uid://cjm51uduwe2r" path="res://assets/leaves_close.png" id="19_xx2rq"]
 [ext_resource type="Texture2D" uid="uid://bof7p44p2b88f" path="res://assets/about_3.jpg" id="20_dxypo"]
 [ext_resource type="Texture2D" uid="uid://l1d84y7mf248" path="res://assets/about_6.jpg" id="21_b4q2u"]
 [ext_resource type="Texture2D" uid="uid://0ry67tlxjxr3" path="res://assets/about_4.jpg" id="21_q2g02"]
@@ -652,11 +652,16 @@ size_flags_vertical = 3
 color = Color(0.360784, 0.545098, 0.576471, 1)
 
 [node name="leaves_far" type="Sprite2D" parent="."]
-position = Vector2(56, -300)
-texture = ExtResource("2_ls1as")
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-277, -469)
+texture = ExtResource("9_biroe")
+region_enabled = true
+region_rect = Rect2(-4318, -5, 10278, 771)
 
 [node name="trunk" type="Sprite2D" parent="."]
-position = Vector2(0, 534)
+position = Vector2(0, 684)
+scale = Vector2(1, 1.5)
 texture = ExtResource("1_6e062")
 
 [node name="birdhouse" type="Sprite2D" parent="."]
@@ -719,9 +724,21 @@ one_shot = true
 [node name="birdhouse_front" type="Sprite2D" parent="."]
 texture = ExtResource("5_271k8")
 
-[node name="leaves" type="Sprite2D" parent="."]
-position = Vector2(-52, -96)
-texture = ExtResource("2_yol87")
+[node name="Parallax2D" type="Parallax2D" parent="."]
+
+[node name="leaves_close" type="Sprite2D" parent="Parallax2D"]
+texture_repeat = 2
+position = Vector2(-203, -856)
+texture = ExtResource("19_xx2rq")
+region_enabled = true
+region_rect = Rect2(-3835, 0, 8667, 1320)
+
+[node name="leaves_cover" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(181, -358)
+texture = ExtResource("19_xx2rq")
+region_enabled = true
+region_rect = Rect2(60, 0, 807, 327)
 
 [node name="homeScreen" type="CanvasLayer" parent="."]
 visible = false

@@ -12,7 +12,7 @@ var music_tween
 
 func _ready():
 	populateQueues()
-
+	AudioServer.set_bus_volume_db(0, linear_to_db(0.5))
 func populateQueues():
 	for x in range(queue_length):
 		var new_player = AudioStreamPlayer.new()

@@ -1,0 +1,6 @@
+[gd_resource type="PlaneMesh" format=3 uid="uid://dxawypo5v1rj5"]
+
+[resource]
+flip_faces = true
+size = Vector2(256, 256)
+orientation = 2

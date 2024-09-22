@@ -57,7 +57,7 @@ func birdLeft(_anim) -> void:
 	birdCall(current_bird_out)
 	
 func birdReturned(_anim) -> void:
-	toggleBirdClick(current_bird_out, false)
+	if current_bird_out != null: toggleBirdClick(current_bird_out, false)
 	current_bird_out = null
 	bird_out = false
 	emit_signal("bird_returned")

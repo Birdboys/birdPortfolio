@@ -15,3 +15,11 @@ func changeVolume():
 	print(volume_index/4.0)
 	AudioServer.set_bus_volume_db(0, linear_to_db(volume_index/4.0))
 	AudioHandler.playSound("ui_click")
+
+func setVolume(vol):
+	volume_index = vol
+	var new_texture = load("res://assets/buttons/volume_button_%s.png" % volume_index)
+	texture_normal = new_texture
+	texture_hover = new_texture
+	texture_pressed = new_texture
+	

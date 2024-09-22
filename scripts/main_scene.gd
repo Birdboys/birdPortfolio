@@ -8,10 +8,11 @@ extends Node2D
 @onready var projectsScreen := $projectsScreen
 @onready var openScreen := $openScreen
 @onready var openControl := $openScreen/openControl
+@onready var volumeButton := $mainUI/mainControl/marginCont/buttonBox/volumeButton
 @onready var birdHandler := $birdHandler
 @onready var birdhouse := $birdhouse
 @onready var cam_home_pos := Vector2(-256, -156)
-@onready var cam_about_pos := Vector2(-820, -640)
+@onready var cam_about_pos := Vector2(-920, -1000)
 @onready var cam_resume_pos := Vector2(1264, 0)
 @onready var cam_contact_pos := Vector2(-301, 944)
 @onready var cam_project_pos := Vector2(-1456, 0)
@@ -34,10 +35,11 @@ func _ready() -> void:
 	open_tween.tween_interval(1.0)
 	open_tween.tween_property(openControl, "modulate", Color.TRANSPARENT, 1.5)
 	open_tween.tween_callback(openScreen.set_visible.bind(false))
-	
+	volumeButton.setVolume(int(db_to_linear(AudioServer.get_bus_volume_db(0))*4.0))
+	 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("reload"): get_tree().change_scene_to_file("res://scenes/main_scene.tscn")
-
+	
 func tweenBirdhouse():
 	if birdhouse_tween is Tween: birdhouse_tween.kill()
 	birdhouse_tween = get_tree().create_tween()
