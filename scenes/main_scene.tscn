@@ -582,7 +582,6 @@ _data = {
 script = ExtResource("1_7ouk4")
 
 [node name="mainCam" type="Camera2D" parent="."]
-position = Vector2(-429, 0)
 
 [node name="mainUI" type="CanvasLayer" parent="."]
 layer = 2
@@ -1079,7 +1078,6 @@ text = "FLY BACK"
 alignment = 0
 
 [node name="backShadow" type="Label" parent="aboutScreen/aboutControl/marginCont/backButton"]
-visible = false
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -1101,6 +1099,7 @@ libraries = {
 [node name="imageTimer" type="Timer" parent="aboutScreen"]
 
 [node name="resumeScreen" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("15_il76g")
 
 [node name="resumeControl" type="Control" parent="resumeScreen"]
@@ -1281,7 +1280,6 @@ libraries = {
 }
 
 [node name="projectsScreen" type="CanvasLayer" parent="."]
-visible = false
 script = ExtResource("23_nl176")
 projectMedia = {
 "beatbox": PackedStringArray("res://assets/beatbox_1.png", "res://assets/beatbox_2.png", "res://assets/beatbox_3.png"),
